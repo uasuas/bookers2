@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  
+  
   def new
     @book = Book.new
   end
@@ -12,10 +14,14 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.new
+    
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to user_path
+    end
   end
 
   def edit
-    @book = Book.new
   end
 
   def index
@@ -27,6 +33,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :image)
+    params.require(:book).permit(:title, :body)
   end
 end

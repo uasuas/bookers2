@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  
+  <main>
+  <h2>Books</h2>
+  <table>
+    <thead>
+      <tr>
+        <th class="td-title">Title</th>
+        <th class="td-title">Body</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.title %></td>
+          <td><%= book.body %></td>
+          <td><%= link_to "Show", book_path(book.id), class: "link-color" %></td>
+          <td><%= link_to "Edit", edit_book_path(book.id), class: "link-color" %></td>
+          <td><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?", class: "link-color" %></td>
+          <th colspan="5"></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

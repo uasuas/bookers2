@@ -8,16 +8,27 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
+    if @book.save
+      flash[:notice] = "successfully."
+      redirect_to book_path(@book.id)
+    else
+      flash[:notice] = "error."
+      redirect_to '/books'
+    end
+  end
+
+  def destroy
+    book = Book.find(params[:id])
+    book.destroy
+    flash[:notice] = "successfully"
     redirect_to '/books'
   end
 
 
   def show
     @book = Book.find(params[:id])
-
-    user = User.find(params[:id])
-    unless user.id == current_user.id
+    @user = User.find(@book.user_id)
+    unless @user.id == current_user.id
       redirect_to user_path
     end
   end

@@ -1,1 +1,17 @@
-<%= render 'layouts/userbooknew' %>
+<div class="flash">
+  <%= flash[:notice] %>
+</div>
+<%= render 'layouts/profile' %>
+<%= render 'layouts/booknew' %>
+<table>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= image_tag user.get_profile_image %></td>
+      <td><%= user.name %></td>
+      <td><%= link_to user_path(user) do %>Show<% end %></td>
+      <th colspan="3"></th>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

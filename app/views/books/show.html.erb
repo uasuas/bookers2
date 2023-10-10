@@ -1,1 +1,20 @@
 <%= render 'layouts/userbooknew' %>
+
+<h2><strong>Book detail</strong></h2>
+<tabld>
+  <tr>
+    <td><strong>Title</strong></td>
+    <td><strong>Opinion</strong></td>
+  </tr>
+</tabld>
+
+<tabld>
+  <tr>
+    <td><%= image_tag @book.user.get_profile_image do %><% end %></td>
+    <td><%= link_to user_path do %><%= @book.user.name %><% end %></td>
+    <td><%= link_to book_path do %><%= @book.title %><% end %></td>
+    <td><%= @book.body %></td>
+    <%= link_to edit_book_path, class: "" do %>edit<% end %>
+    <%= link_to books_path, method: :delete, class: "" do %>destroy<% end %>
+  </tr>
+</tabld>

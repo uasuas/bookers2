@@ -1,7 +1,7 @@
 <div class="flash">
   <%= flash[:notice] %>
 </div>
-<%= render 'layouts/profile' %>
+<%= render 'layouts/profile', user: current_user %>
 <%= render 'layouts/booknew', book: @booknew %>
 <table>
   <tbody>

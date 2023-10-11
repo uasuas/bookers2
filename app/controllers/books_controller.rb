@@ -26,6 +26,7 @@ before_action :is_matching_login_user, only: [:edit, :update]
 
 
   def show
+    @user = User.find(params[:id])
     @book = Book.find(params[:id])
     @booknew = Book.new
   end
@@ -57,8 +58,8 @@ before_action :is_matching_login_user, only: [:edit, :update]
   end
 
   def is_matching_login_user
-    user = User.find(params[:id])
-    unless user.id == current_user.id
+    book = Book.find(params[:id])
+    unless book.user == current_user
       redirect_to books_path
     end
   end

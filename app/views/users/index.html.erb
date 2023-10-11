@@ -1,8 +1,8 @@
 <div class="flash">
   <%= flash[:notice] %>
-</div>cs
+</div>
 <%= render 'layouts/profile' %>
-<%= render 'layouts/booknew' %>
+<%= render 'layouts/booknew', book: @booknew %>
 <table>
   <tbody>
   <% @users.each do |user| %>

@@ -1,0 +1,12 @@
+<% if message.errors.any? %>
+  <% if message.errors.count == 1 %>
+    <%= message.errors.count %>error prohibited this book from being saved:
+  <% else %>
+    <%= message.errors.count %>errors prohibited this book from being saved:
+  <% end %>
+  <ul>
+    <% message.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>

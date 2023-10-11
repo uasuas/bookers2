@@ -1,5 +1,8 @@
 <%= render 'layouts/profile' %>
-<%= render 'layouts/booknew' %>
+<%= render 'layouts/booknew', book: @booknew %>
+<div class="flash">
+  <%= flash[:notice] %>
+</div>
 
 <h2><strong>Book detail</strong></h2>
 <tabld>
@@ -9,13 +12,22 @@
   </tr>
 </tabld>
 
+<div>
+  <%= link_to user_path(@book.user.id) do %>
+    <%= image_tag @book.user.get_profile_image %>
+    <%= @book.user.name %>
+  <% end %>
+</div>
+
 <tabld>
   <tr>
-    <td><%= image_tag @book.user.get_profile_image do %><% end %></td>
-    <td><%= link_to user_path do %><%= @book.user.name %><% end %></td>
-    <td><%= link_to book_path do %><%= @book.title %><% end %></td>
+    <td><%= link_to book_path(@book.id) do %><%= @book.title %><% end %></td>
     <td><%= @book.body %></td>
-    <%= link_to edit_book_path, class: "" do %>edit<% end %>
-    <%= link_to books_path, method: :delete, class: "" do %>destroy<% end %>
   </tr>
 </tabld>
+<div>
+  <% if user_signed_in? && current_user.id == @book.user_id %>
+    <%= link_to edit_book_path(@book.id), class: "" do %>edit<% end %>
+    <%= link_to book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "" do %>destroy<% end %>
+  <% end %>
+</div>

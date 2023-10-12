@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 before_action :is_matching_login_user, only: [:edit, :update]
 
   def new
-    @book = Book.new
+    @booknew = Book.new
   end
 
   def create
@@ -26,8 +26,9 @@ before_action :is_matching_login_user, only: [:edit, :update]
 
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])r
     @book = Book.find(params[:id])
+    @user = @book.user
     @booknew = Book.new
   end
 

@@ -1,17 +1,34 @@
 <div class="flash">
   <%= flash[:notice] %>
 </div>
-<%= render 'layouts/profile', user: current_user %>
-<%= render 'layouts/booknew', book: @booknew %>
-<table>
-  <tbody>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= image_tag user.get_profile_image %></td>
-      <td><%= user.name %></td>
-      <td><%= link_to user_path(user) do %>Show<% end %></td>
-      <th colspan="3"></th>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<div class="container pt-4">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'layouts/profile', user: current_user %>
+      <%= render 'layouts/booknew', book: @booknew %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Users</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">image</td>
+            <th scope="col">name</td>
+            <th scope="col"></th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= image_tag user.get_profile_image(80,80) %></td>
+            <td><%= user.name %></td>
+            <td><%= link_to user_path(user) do %>Show<% end %></td>
+            <th colspan="3"></th>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

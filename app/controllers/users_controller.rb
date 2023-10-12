@@ -14,7 +14,7 @@ before_action :is_matching_login_user, only: [:edit, :update]
     @user = User.find(params[:id])
     @booknew = Book.new
     @books = @user.books
-    @book = Book.find(params[:id])
+    # @book = Book.find(params[:id])
   end
 
   def edit

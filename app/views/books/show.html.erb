@@ -9,12 +9,7 @@
       <h2>Book detail</h2>
       <table class="table">
         <th>
-          <div>
-            <%= link_to user_path(@book.user.id) do %>
-              <%= image_tag @book.user.get_profile_image(80,80) %>
-              <%= @book.user.name %>
-            <% end %>
-          </div>
+            <%= link_to user_path(@book.user.id) do %><%= image_tag @book.user.get_profile_image(100,100) %><br/><%= @book.user.name %><% end %>
         </th>
         <th>
           <%= link_to book_path(@book.id) do %><%= @book.title %><% end %>
@@ -25,8 +20,8 @@
         <th>
           <div>
             <% if user_signed_in? && current_user.id == @book.user_id %>
-              <%= link_to edit_book_path(@book.id), class: "" do %>edit<% end %>
-              <%= link_to book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "" do %>destroy<% end %>
+              <%= link_to edit_book_path(@book.id), class: "btn btn-success mr-5" do %>Edit<% end %>
+              <%= link_to book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger ml-5" do %>Destroy<% end %>
             <% end %>
           </div>
         </th>

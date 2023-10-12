@@ -1,17 +1,18 @@
 <%= render 'layouts/error', message: @book %>
-
-<h2><strong>Editing Book</strong></h2>
-
-<%= form_with model:@book do |f| %>
-  <h5>Title</h5>
-  <%= f.text_field :title %>
-
-  <h5>Body</h5>
-  <%= f.text_area :body %><br/>
-
-  <%= f.submit ' Update Book ' %>
-<% end %>
-
-<%= link_to book_path(@book.id), class: "link-color" do %>Show<% end %>
-|
-<%= link_to books_path, class: "link-color" do %>Back<% end %>
+<div class="container m-4">
+  <div class="row-cols-1">
+    <div class="mx-auto col-sm-12 col-md-8 col-lg-5">
+      <h2 class="col form-group p-0">Editing Book</h2>
+      <%= form_with model:@book do |f| %>
+        <p class="col p-0">Title</p>
+        <%= f.text_field :title, class:"col form-control form-control-sm" %>
+        <p class="col p-0">Body</p>
+        <%= f.text_area :body, class:"form-control form-control-lg" %><br/>
+        <%= f.submit ' Update Book ', class:"btn btn-success mb-4" %>
+      <% end %>
+      <%= link_to book_path(@book.id), class: "link-color" do %>Show<% end %>
+      |
+      <%= link_to books_path, class: "link-color" do %>Back<% end %>
+    </div>
+  </div>
+</div>

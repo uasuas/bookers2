@@ -6,14 +6,14 @@ before_action :is_matching_login_user, only: [:edit, :update]
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-    if @book.save
+    @booknew = Book.new(book_params)
+    @booknew.user_id = current_user.id
+    if @booknew.save
       flash[:notice] = "successfully"
-      redirect_to book_path(@book.id)
+      redirect_to book_path(@booknew.id)
     else
-      flash[:notice] = "error"
-      redirect_to books_path
+      @books = Book.all
+      render :index
     end
   end
 

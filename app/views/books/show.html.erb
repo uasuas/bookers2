@@ -1,4 +1,4 @@
-
+<%= render 'layouts/error', message: @book_comment %>
 <div class="container pt-4">
   <div class="row">
     <div class="col-md-3">
@@ -17,16 +17,42 @@
         <th>
           <%= @book.body %>
         </th>
-        <td><%= render 'books/favorites', book: @book %></td>
+        <th>
+          <%= render 'books/favorites', book: @book %><br/>
+          コメント <%= @book.book_comments.count %>
+        </th>
         <th>
           <div>
             <% if user_signed_in? && current_user.id == @book.user_id %>
-              <%= link_to edit_book_path(@book.id), class: "btn btn-success mr-5" do %>Edit<% end %>
-              <%= link_to book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger ml-5" do %>Destroy<% end %>
+              <%= link_to edit_book_path(@book.id), class: "btn btn-success m-2" do %>Edit<% end %>
+              <%= link_to book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" do %>Destroy<% end %>
             <% end %>
           </div>
         </th>
       </table>
+      <% if user_signed_in? && current_user.id != @book.user_id %>
+        <%= form_with model: [@book, @book_comment] do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class:"w-100" %><br/>
+          <%= f.submit "送信" %>
+        <% end %>
+      <% end %>
+      <div class="row mt-3">
+        <table class="table">
+          <% @book.book_comments.each do |book_comment| %>
+          <tr>
+            <td class="col-2" style="width:100px"><%= image_tag book_comment.user.get_profile_image(100,100) %></td>
+            <td class="col-3">
+              <%= book_comment.user.name %><br/>
+              <%= book_comment.created_at.strftime('%Y/%m/%d') %><br/>
+              <% if user_signed_in? && current_user == book_comment.user %>
+                <%= link_to book_book_comment_path(book_comment.book, book_comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" do %>Destroy<% end %>
+              <% end %>
+            </td>
+            <td class="col-7"><%= book_comment.comment %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
     </div>
   </div>
 </div>

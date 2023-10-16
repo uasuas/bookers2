@@ -14,7 +14,8 @@
             <th scope="col">Title</th>
             <th scope="col">Body</th>
             <th></th>
-            <th colspan="4"></th>
+            <th></th>
+            <th colspan="5"></th>
           </tr>
         </thead>
         <tbody>
@@ -23,8 +24,11 @@
               <td><%= link_to user_path(book.user) do %><%= image_tag book.user.get_profile_image(80,80) %><% end %></td>
               <td><%= link_to book_path(book) do %><%= book.title %><% end %></td>
               <td><%= book.body %></td>
-              <td><%= render 'books/favorites', book: book %></td>
-              <td colspan="4"></th>
+              <td>
+                <%= render 'books/favorites', book: book %><br/>
+                コメント <%= book.book_comments.count %>
+              </td>
+              <td colspan="5"></th>
             </tr>
           <% end %>
         </tbody>

@@ -17,6 +17,7 @@
         <th>
           <%= @book.body %>
         </th>
+        <td><%= render 'books/favorites', book: @book %></td>
         <th>
           <div>
             <% if user_signed_in? && current_user.id == @book.user_id %>

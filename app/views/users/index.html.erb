@@ -1,12 +1,12 @@
-
+<%= render 'layouts/error', message: @booknew %>
 <div class="container-fluid pt-4">
   <div class="row">
+    <div class="col-3 offset-9"><%= render 'layouts/search' %></div>
     <div class="col-md-3">
       <%= render 'layouts/profile', user: current_user %>
       <%= render 'layouts/booknew', book: @booknew %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <%= render 'layouts/search' %>
       <h2>Users</h2>
       <table class="table">
         <thead>

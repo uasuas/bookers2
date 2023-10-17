@@ -1,11 +1,12 @@
 <%= render 'layouts/error', message: @booknew %>
-<div class="container pt-4">
+<div class="container-fluid pt-4">
   <div class="row">
     <div class="col-md-3">
       <%= render 'layouts/profile', user: current_user %>
       <%= render 'layouts/booknew', book: @booknew %>
     </div>
     <div class="col-md-8 offset-md-1">
+      <%= render 'layouts/search' %>
       <h2>Books</h2>
       <table class="table">
         <thead>
@@ -14,8 +15,7 @@
             <th scope="col">Title</th>
             <th scope="col">Body</th>
             <th></th>
-            <th></th>
-            <th colspan="5"></th>
+            <th colspan="4"></th>
           </tr>
         </thead>
         <tbody>
@@ -28,7 +28,6 @@
                 <%= render 'books/favorites', book: book %><br/>
                 コメント <%= book.book_comments.count %>
               </td>
-              <td colspan="5"></th>
             </tr>
           <% end %>
         </tbody>

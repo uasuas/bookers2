@@ -5,14 +5,15 @@ Rails.application.routes.draw do
   devise_for :users
 
   get '/home/about' => "homes#about", as: "about"
+  get 'search' => "searches#search"
 
   resources :books do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
-  
+
   resources :users, only: [:new, :index, :show, :edit, :update]
-  
+
   resources :users do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'

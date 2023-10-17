@@ -37,21 +37,7 @@
         <% end %>
       <% end %>
       <div class="row mt-3">
-        <table class="table">
-          <% @book.book_comments.each do |book_comment| %>
-          <tr>
-            <td class="col-2" style="width:100px"><%= image_tag book_comment.user.get_profile_image(100,100) %></td>
-            <td class="col-3">
-              <%= book_comment.user.name %><br/>
-              <%= book_comment.created_at.strftime('%Y/%m/%d') %><br/>
-              <% if user_signed_in? && current_user == book_comment.user %>
-                <%= link_to book_book_comment_path(book_comment.book, book_comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" do %>Destroy<% end %>
-              <% end %>
-            </td>
-            <td class="col-7"><%= book_comment.comment %></td>
-          </tr>
-          <% end %>
-        </table>
+        <%= render 'books/bookcomment', book: @book %>
       </div>
     </div>
   </div>

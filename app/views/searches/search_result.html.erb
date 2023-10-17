@@ -1,7 +1,9 @@
 <% if @range == "User" %>
   <h3>【User検索結果】検索ワード：<%= @word %></h3>
+  <p><%= render 'layouts/search' %></p>
 <% else %>
   <h3>【Book検索結果】検索ワード：<%= @word %></h3>
+  <p><%= render 'layouts/search' %></p>
 <% end %>
 <table class="table table-hover table-inverse">
   <!--検索対象モデルがUserの時 -->

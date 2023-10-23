@@ -7,14 +7,8 @@
         </h1>
 
       </div>
-      <div class="message" style="width: 400px;">
-        <% @chats.each do |chat| %>
-          <% if chat.user_id == current_user.id %>
-            <p style="text-align: right;"><%= link_to chat_path(chat), method: :delete, remote: true do %><%= chat.message %><% end %></p>
-          <% else %>
-            <p style="text-align: left;"><%= chat.message %></p>
-          <% end %>
-        <% end %>
+      <div id="message_buttons">
+        <%= render "chats/message", chats: @chats %>
       </div>
 
       <div class="errors">

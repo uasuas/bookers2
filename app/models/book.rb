@@ -2,6 +2,8 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
+  # いいね多い順
+  has_many :week_favorites, -> { where(created_at: 1.week.ago.beginning_of_day..Time.current.end_of_day) }
 
   # 検索機能
   def self.looks(search, word)
@@ -20,6 +22,8 @@ class Book < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
+  
+  
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

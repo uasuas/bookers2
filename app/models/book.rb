@@ -4,6 +4,8 @@ class Book < ApplicationRecord
   has_many :book_comments, dependent: :destroy
   # いいね多い順
   has_many :week_favorites, -> { where(created_at: 1.week.ago.beginning_of_day..Time.current.end_of_day) }
+  # 閲覧数
+  has_many :read_counts, dependent: :destroy
 
 
   # 検索機能

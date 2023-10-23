@@ -29,8 +29,8 @@
             <% end %>
           </div>
         </th>
+        <th>閲覧数: <%= @book.read_counts.count %></th>
       </table>
-
       <div class="mt-3", id="bookcomment_buttons_<%= @book.id %>">
         <%= render 'books/bookcomment', book: @book, book_comment: @book_comment %>
       </div>

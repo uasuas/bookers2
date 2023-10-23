@@ -15,7 +15,9 @@
             <th scope="col">Title</th>
             <th scope="col">Body</th>
             <th></th>
-            <th colspan="4"></th>
+            <th></th>
+            <th></th>
+            <th colspan="6"></th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +30,7 @@
                 <%= render "books/favorites", book: book %>
               </td>
               <td>コメント <%= book.book_comments.count %></td>
+              <td>閲覧数：<%= book.read_counts.count %></td>
             </tr>
           <% end %>
         </tbody>

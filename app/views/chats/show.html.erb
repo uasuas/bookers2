@@ -1,11 +1,14 @@
 <div class="container">
   <div class ="row">
-    <div class="col-8 mx-auto">
+    <div class="col-8 mx-auto mt-2 pt-3 card border-secondary shadow">
       <div class="d-flex justify-content-between">
-        <h1 class="text-left" id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">
+        <h2 class="text-left" id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">
+          <%= image_tag @user.get_profile_image(50,50) %>
           <%= @user.name %> さんとのチャット
-        </h1>
-
+        </h2>
+        <div class="text-rigth align-self-center">
+          <%= link_to('再読込', 'javascript:void(0);', onclick: "window.location.reload();", class: "btn btn-primary")  %>
+        </div>
       </div>
       <div id="message_buttons">
         <%= render "chats/message", chats: @chats %>
@@ -14,11 +17,13 @@
       <div class="errors">
         <%= render "layouts/error", message: @chat %>
       </div>
-
-      <%= form_with model: @chat, data: {remote: true} do |f| %>
-        <%= f.text_field :message %>
-        <%= f.hidden_field :room_id %>
-      <% end %>
+      <div class="row justify-content-end p-2">
+        <%= form_with model: @chat, data: {remote: true} do |f| %>
+          <%= f.text_field :message %>
+          <%= f.hidden_field :room_id %>
+          <%= f.submit "送信", class:"m-2" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

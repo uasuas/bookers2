@@ -1,9 +1,27 @@
-<div class="message" style="width: 400px;">
+<div class="message container card border-secondary shadow-sm pt-2">
   <% chats.each do |chat| %>
-    <% if chat.user_id == current_user.id %>
-      <p style="text-align: right;"><%= link_to chat_path(chat), method: :delete, remote: true do %><%= chat.message %><% end %></p>
-    <% else %>
-      <p style="text-align: left;"><%= chat.message %></p>
-    <% end %>
+    <div class="row">
+      <div class="col">
+        <% if chat.user_id == current_user.id %>
+          <div class="row justify-content-end">
+            <p class="col-auto h-auto p-0 bg-light rounded-pill">
+              <span class="card-body border-secondary">
+                <%= link_to chat_path(chat), method: :delete, remote: true do %>
+                  <%= chat.message %>
+                <% end %>
+              </span>
+            </p>
+          </div>
+        <% else %>
+          <div class="row">
+            <p class="col-auto h-auto p-0 bg-light rounded-pill">
+              <span class="card-body border-secondary">
+                <%= chat.message %>
+              </span>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 </div>

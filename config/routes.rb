@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   end
   # DM機能
   resources :chats, only: [:show, :create, :destroy]
+  # グループ機能
+  resources :groups, except: [:destroy]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

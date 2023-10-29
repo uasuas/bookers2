@@ -10,6 +10,10 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import 'jquery'//スライドショーの追加
+import "script.js"//スライドショーの追加
+import Swiper from 'swiper/swiper-bundle.js';//スライドショーの追加
+import 'swiper/swiper-bundle.css';//スライドショーの追加
 
 
 import "popper.js";

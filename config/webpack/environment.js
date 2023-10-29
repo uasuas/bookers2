@@ -8,6 +8,7 @@ environment.plugins.prepend(
   new webpack.ProvidePlugin({
     $: 'jquery/src/jquery',
     jQuery: 'jquery/src/jquery',
-    Popper: 'popper.js'
+    Popper: 'popper.js',//,の追加
+    Swiper: 'swiper/swiper-bundle'//スライドショーの追加
   })
 )

@@ -1,1 +1,14 @@
 @use '~bootstrap/scss/bootstrap';
+// スライドショーの追加
+
+.swiper {
+  width: 500px;
+  height: 300px;
+}
+
+:root {
+  --swiper-navigation-color: #ffffff;
+  --swiper-pagination-color: #ffffff;
+}
+
+// スライドショーの追加

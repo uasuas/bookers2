@@ -16,6 +16,17 @@
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
     <%= yield %>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <span id="back" class="fixed-bottom" style="position: fixed; left: 10px; bottom: 10px;">
+            <a href="#">
+              <%= image_tag 'arrow.png', size: '30x30' %>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
     <%= render 'layouts/footer' %>
   </body>
 </html>

@@ -1,1 +1,1 @@
-$('#message_buttons').html('<%= j(render "chats/message", chats: @chats) %>');
+$('#message_<%= @chat.id %>').remove();

@@ -11,14 +11,17 @@
         </div>
       </div>
       <div id="message_buttons">
-        <%= render "chats/message", chats: @chats %>
+        <div class="message container card border-secondary shadow-sm pt-2">
+          <% @chats.each do |chat| %>
+            <%= render "chats/message", chat: chat %>
+          <% end %>
+        </div>
       </div>
-
       <div class="errors">
         <%= render "layouts/error", message: @chat %>
       </div>
       <div class="row justify-content-end p-2">
-        <%= form_with model: @chat, data: {remote: true} do |f| %>
+        <%= form_with model: @chat, local: false do |f| %>
           <%= f.text_field :message %>
           <%= f.hidden_field :room_id %>
           <%= f.submit "送信", class:"m-2" %>

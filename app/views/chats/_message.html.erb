@@ -1,27 +1,29 @@
-<div class="message container card border-secondary shadow-sm pt-2">
-  <% chats.each do |chat| %>
-    <div class="row">
-      <div class="col">
-        <% if chat.user_id == current_user.id %>
-          <div class="row justify-content-end">
-            <p class="col-auto h-auto p-0 bg-light rounded-pill">
-              <span class="card-body border-secondary">
-                <%= link_to chat_path(chat), method: :delete, remote: true do %>
-                  <%= chat.message %>
-                <% end %>
-              </span>
-            </p>
-          </div>
-        <% else %>
-          <div class="row">
-            <p class="col-auto h-auto p-0 bg-light rounded-pill">
-              <span class="card-body border-secondary">
-                <%= chat.message %>
-              </span>
-            </p>
-          </div>
-        <% end %>
+<div class="row">
+  <div class="col" id="message_<%= chat.id %>">
+    <% if chat.user_id == current_user.id %>
+      <div class="row justify-content-end">
+        <p class="col-auto h-auto p-0 bg-light rounded-pill">
+          <span class="card-body border-secondary">
+            <%= link_to chat_path(chat), method: :delete, remote: true do %>
+              <%= chat.message %>
+            <% end %>
+          </span>
+        </p>
+        <div class="col-auto">
+          <%= image_tag chat.user.get_profile_image(50,50) %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% else %>
+      <div class="row">
+        <div class="col-auto">
+          <%= image_tag chat.user.get_profile_image(50,50) %>
+        </div>
+        <p class="col-auto h-auto p-0 bg-light rounded-pill">
+          <span class="card-body border-secondary">
+            <%= chat.message %>
+          </span>
+        </p>
+      </div>
+    <% end %>
+  </div>
 </div>

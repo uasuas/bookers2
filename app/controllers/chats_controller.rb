@@ -25,7 +25,7 @@ class ChatsController < ApplicationController
   def destroy
     @chat = Chat.find(params[:id])
     @chat.destroy
-    @chats = @chat.room.chats
+    # @chats = @chat.room.chats
   end
 
   private

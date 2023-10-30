@@ -39,6 +39,21 @@ class GroupsController < ApplicationController
       end
     end
 
+    # メール機能
+    def new_mail
+      @group = Group.find(params[:group_id])
+    end
+
+    def send_mail
+      @group = Group.find(params[:group_id])
+      group_users = @group.users
+      # メール送信完了後のページに表示するためのインスタンス変数
+      @mail_title = params[:mail_title]
+      @mail_content = params[:mail_content]
+      # mailers/contact_mailer.rbに上記を受け渡しをして.戻ってきたものを送信
+      ContactMailer.send_mail(@mail_title, @mail_content,group_users,@group).deliver
+    end
+
     private
 
     def group_params

@@ -6,19 +6,23 @@
     <table class="table">
       <tr>
         <th scope="row">name</th>
-        <th><%= user.name %></th>
+        <td><%= user.name %></td>
       </tr>
       <tr>
         <th scope="row">introduction</th>
-        <th><%= user.introduction %></th>
+        <td><%= user.introduction %></td>
       </tr>
       <tr>
         <th scope="row">follows</th>
-        <th><%= link_to user_followings_path(user.id) do %><%= user.followings.count %><% end %></th>
+        <td><%= link_to user_followings_path(user.id), class:"text-decoration-none" do %><%= user.followings.count %><% end %></td>
       </tr>
       <tr>
         <th scope="row">followers</th>
-        <th><%= link_to user_followers_path(user.id) do %><%= user.followers.count %><% end %></th>
+        <td><%= link_to user_followers_path(user.id), class:"text-decoration-none" do %><%= user.followers.count %><% end %></td>
+      </tr>
+      <tr>
+        <th><%= link_to 'いいね', favorites_user_path(user), class:"text-decoration-none" %></th>
+        <td></td>
       </tr>
     </thead>
   </table>

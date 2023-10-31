@@ -9,10 +9,10 @@
       <h2>Book detail</h2>
       <table class="table">
         <th>
-            <%= link_to user_path(@book.user.id) do %><%= image_tag @book.user.get_profile_image(100,100) %><br/><%= @book.user.name %><% end %>
+            <%= link_to user_path(@book.user.id), class:"text-decoration-none" do %><%= image_tag @book.user.get_profile_image(100,100) %><br/><%= @book.user.name %><% end %>
         </th>
         <th>
-          <%= link_to book_path(@book.id) do %><%= @book.title %><% end %>
+          <%= link_to book_path(@book.id), class:"text-decoration-none" do %><%= @book.title %><% end %>
         </th>
         <th>
           <%= @book.body %>

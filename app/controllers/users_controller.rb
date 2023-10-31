@@ -32,6 +32,13 @@ before_action :is_matching_login_user, only: [:edit, :update]
     end
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:book_id)
+    @favorite_books = Book.find(favorites)
+    @book = Book.find(params[:id])
+  end
+
   private
 
   def user_params

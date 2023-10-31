@@ -13,11 +13,16 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :index, :show, :edit, :update]
-
+  # いいね機能
   resources :users do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+  end
+  resources :users, only: [:index, :show, :edit, :update, :new] do
+    member do
+      get :favorites
+    end
   end
   # DM機能
   resources :chats, only: [:show, :create, :destroy]

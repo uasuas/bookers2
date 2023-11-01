@@ -10,10 +10,10 @@ class User < ApplicationRecord
   #
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
-  # FF機能
+  # FF機能/reverse_of_は同名でのhas_manyを避けるため、class_name:どこのforeign_key:何、のhas_manyかを記述
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  # FF機能index用
+  # FF機能index用/followingsから見て、through:でrelationshipsという名前のテーブルを介してsourceで指定したfollowedの中身を取れるようにする
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
   # DM機能

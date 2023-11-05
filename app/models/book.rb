@@ -25,8 +25,18 @@ class Book < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
-
-
+  
+  # scope :sorted_by_favorite_count,lambda{
+  #   to = Time.current.at_end_of_day
+  #   from = (to - 6.days).at_beginning_of_day
+  #   joins("LEFT JOIN favorites ON books.id = favorites.book_id AND favorites.created_at >= '#{from}' AND favorites.created_at <= '#{to}'")
+  #   .group('books.id')
+  #   .select('books.*, COUNT(favorites.id) as favorites_count')
+  #   .order('favorites_count DESC')
+  # }
+  # scope :latest, -> {order(created_at: :desc)}
+  # scope :old, -> {order(created_at: :asc)}
+  # scope :star_count, -> {order(star: :desc)}
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

@@ -3,6 +3,7 @@
   <div class="row-cols-1">
     <div class="mx-auto col-sm-12 col-md-8 col-lg-5">
       <h2 class="col form-group p-0">Editing Book</h2>
+      <%= render 'books/form', book: @book %>
       <%= form_with model:@book do |f| %>
         <p class="col p-0">Title</p>
         <%= f.text_field :title, class:"col form-control form-control-sm" %>

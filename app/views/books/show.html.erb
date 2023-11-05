@@ -17,6 +17,7 @@
         <th>
           <%= @book.body %>
         </th>
+        <th><%= render "books/static.rate", book: @book %></th>
         <th id="favorite_buttons_<%= @book.id %>">
           <%= render "books/favorites", book: @book %>
         </th>

@@ -3,12 +3,12 @@
   <div class="row-cols-1">
     <div class="mx-auto col-sm-12 col-md-8 col-lg-5">
       <h2 class="col form-group p-0">Editing Book</h2>
-      <%= render 'books/form', book: @book %>
       <%= form_with model:@book do |f| %>
         <p class="col p-0">Title</p>
         <%= f.text_field :title, class:"col form-control form-control-sm" %>
         <p class="col p-0">Body</p>
         <%= f.text_area :body, class:"form-control form-control-lg" %><br/>
+        <%= render 'books/static.rate', book: @book %><br/>
         <%= f.submit ' Update Book ', class:"btn btn-success mb-4" %>
       <% end %>
       <%= link_to book_path(@book.id), class: "link-color" do %>Show<% end %>

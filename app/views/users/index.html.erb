@@ -4,7 +4,10 @@
     <div class="col-3 offset-9"><%= render 'layouts/search' %></div>
     <div class="col-md-3">
       <%= render 'layouts/profile', user: current_user %>
-      <%= render 'layouts/booknew', book: @booknew %>
+      <div id="partial-template">
+        <%= render 'layouts/booknew', book: @booknew %>
+        <button id="close-partial-template">Close</button>
+      </div>
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>Users</h2>

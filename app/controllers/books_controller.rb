@@ -60,8 +60,8 @@ before_action :is_matching_login_user, only: [:edit, :update]
     elsif params[:favorites]
       to = Time.current.at_end_of_day
       from = (to - 6.days).at_beginning_of_day
-      @books = Book.includes(:favorites).sort_by{|x|
-        x.favorites.where(created_at: from...to).size
+      @books = Book.includes(:favorites).sort_by {
+        |x| x.favorites.where(created_at: from...to).size
       }.reverse
       # @books = Book.left_joins(:favorites)
         # .where(favorites: { created_at: from...to })
@@ -101,7 +101,7 @@ before_action :is_matching_login_user, only: [:edit, :update]
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :star)
+    params.require(:book).permit(:title, :body, :star, :tag)
   end
 
   def is_matching_login_user

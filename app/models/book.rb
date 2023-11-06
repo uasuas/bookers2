@@ -25,7 +25,7 @@ class Book < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
-  
+
   # scope :sorted_by_favorite_count,lambda{
   #   to = Time.current.at_end_of_day
   #   from = (to - 6.days).at_beginning_of_day

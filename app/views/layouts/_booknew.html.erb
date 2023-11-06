@@ -7,6 +7,10 @@
 
   <p>Opinion</p>
   <%= f.text_area :body %><br/>
+
+  <p>Tag</p>
+  <%= f.text_field :tag %>
+
   <% if book.id.nil? %>
     <div class="form-group" id="star">
       <%= f.label :star %>

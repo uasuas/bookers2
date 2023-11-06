@@ -7,9 +7,14 @@ class SearchesController < ApplicationController
     if @range == "User"
       @users = User.looks(params[:search], params[:word])
       render "/searches/search_result"
-    else
+    elsif @range == "Book"
       @books = Book.looks(params[:search], params[:word])
       render "/searches/search_result"
+    elsif @range =="Tag"
+      @books = Book.where("tag LIKE ?", "#{@word}")
+      render "/searches/search_result"
     end
+
+
   end
 end

@@ -36,7 +36,7 @@
         <th style="width: 120px"></th>
         <th scope="col">Title</th>
         <th scope="col">Body</th>
-        <th></th>
+        <th scope="col">Tag</th>
         <th></th>
         <th colspan="5"></th>
       </tr>
@@ -47,10 +47,15 @@
           <td><%= image_tag book.user.get_profile_image(80,80) %></td>
           <td><%= link_to book_path(book) do %><%= book.title %><% end %></td>
           <td><%= book.body %></td>
-          <td>
-            <%= render 'books/favorites', book: book %><br/>
-            コメント <%= book.book_comments.count %>
+          <td><%= link_to tags_search_path(content: book.tag) do %><%= book.tag %><% end %></td>
+          <td id="favorite_buttons_<%= book.id %>">
+            <%= render 'books/favorites', book: book %>
           </td>
+          <td>
+            コメント <%= book.book_comments.count %><br/>
+            閲覧数 : <%= book.read_counts.count %>
+          </td>
+          <td><%= render "books/static.rate", book: book %></td>
         </tr>
       <% end %>
     </tbody>

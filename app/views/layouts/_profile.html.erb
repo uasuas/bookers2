@@ -14,11 +14,11 @@
       </tr>
       <tr>
         <th scope="row">follows</th>
-        <td><%= link_to user_followings_path(user.id), class:"text-decoration-none" do %><%= user.followings.count %><% end %></td>
+        <td id="follow-count"><%= render "layouts/followings_count", user: user %></td>
       </tr>
       <tr>
         <th scope="row">followers</th>
-        <td><%= link_to user_followers_path(user.id), class:"text-decoration-none" do %><%= user.followers.count %><% end %></td>
+        <td id="followers-count"><%= render "layouts/followers_count", user: user %></td>
       </tr>
       <tr>
         <th scope="row">いいね</th>
@@ -34,13 +34,9 @@
         </button>
       <% end %>
     <% else %>
-      <% if user_signed_in? && current_user != user %>
-        <% if current_user.following?(user) %>
-          <%= link_to user_relationships_path(user.id), method: :delete, class:"text-decoration-none" do %><button type="button" class="btn mb-3 btn-info btn-sm btn-block text-white">フォローを外す</button><% end %>
-        <% else %>
-          <%= link_to user_relationships_path(user.id), method: :post, class:"text-decoration-none" do %><button type="button" class="btn mb-3 btn-success btn-sm btn-block text-white">フォローする</button><% end %>
-        <% end %>
-      <% end %>
+      <div id="ff_<%= user.id %>">
+        <%= render 'relationships/ff', user: user %>
+      </div>
     <% end %>
     <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
       <%= link_to 'chatを始める', chat_path(user.id), class: "ml-3" %>

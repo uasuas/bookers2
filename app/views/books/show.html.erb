@@ -24,7 +24,7 @@
         <th id="favorite_buttons_<%= @book.id %>">
           <%= render "books/favorites", book: @book %>
         </th>
-        <th>コメント <%= @book.book_comments.count %></th>
+        <th id="comment-count_<%= @book.id %>">コメント <%= @book.book_comments.count %></th>
         <th>
           <div>
             <% if user_signed_in? && current_user.id == @book.user_id %>

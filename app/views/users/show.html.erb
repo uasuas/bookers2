@@ -3,7 +3,10 @@
   <div class="row">
     <div class="col-md-3">
       <%= render 'layouts/profile', user: @user %>
-      <%= render 'layouts/booknew', book: @booknew %>
+      <div id="newbook-template">
+        <%= render 'layouts/booknew', book: @booknew %>
+      </div>
+      <h2 id="open-newbook-template"><i class="fa-solid fa-circle-right"></i></h2>
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>

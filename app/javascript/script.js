@@ -38,14 +38,32 @@ $(document).on('turbolinks:load', function() {
     let swiper = new Swiper('.swiper',opt);
 });
 
-$(function(){
-  $('#partial-template').on('click',function(){
-    $('#partial-template').css({
-      'display': 'none',
-    }).slideUp();
+
+$(document).on('turbolinks:load', function() {
+  $(function(){
+    $('#open-newbook-template').on('click',function(){
+      $('#open-newbook-template').css({
+        'display': 'none',
+      }).slideUp();
+      $('#newbook-template').css({
+        'display': 'block'
+      });
+    });
   });
 });
 
+$(document).on('turbolinks:load', function() {
+  $(function(){
+    $('#close-newbook-template').on('click',function(){
+      $('#newbook-template').css({
+        'display': 'none'
+      }).slideUp();
+      $('#open-newbook-template').css({
+        'display': 'block',
+      }).slideDown(1000);
+    });
+  });
+});
 // // イベントを監視する要素を取得
 // const targetElement = document.getElementById('target-element'); // マウスオーバーをトリガーする要素
 // const partialTemplate = document.getElementById('partial-template'); // 部分テンプレートの要素

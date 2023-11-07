@@ -14,28 +14,34 @@
       </tr>
       <tr>
         <th scope="row">follows</th>
-        <td id="follow-count"><%= render "layouts/followings_count", user: user %></td>
+        <td><%= link_to user_followings_path(user.id), class:"text-decoration-none", remote: true do %><%= user.followings.count %><% end %></td>
       </tr>
       <tr>
         <th scope="row">followers</th>
-        <td id="followers-count"><%= render "layouts/followers_count", user: user %></td>
+        <td><%= link_to user_followers_path(user.id), class:"text-decoration-none", reomte: true do %><%= user.followers.count %><% end %></td>
       </tr>
       <tr>
         <th scope="row">いいね</th>
-        <td id="favorite_buttons_<%= user.id %>"><%= render "layouts/favoritescount", user: user %></td>
+        <td><%= link_to favorites_user_path(user), class:"text-decoration-none", reomte: true do %><%= user.favorites.count %><% end %></td>
       </tr>
     </thead>
   </table>
   <div class="mb-4">
     <% if user_signed_in? && current_user == user %>
-      <%= link_to edit_user_path(user) do %>
+      <%= link_to edit_user_path(user), reomte: true do %>
         <button type="button" class="btn btn-outline-secondary btn-block">
           <i class="fa-solid fa-user-cog"></i>
         </button>
       <% end %>
     <% else %>
-      <div id="ff_<%= user.id %>">
-        <%= render 'relationships/ff', user: user %>
+      <div>
+        <% if user_signed_in? && current_user != user %>
+          <% if current_user.following?(user) %>
+            <%= link_to user_relationships_path(user.id), remote: true, method: :delete, class:"text-decoration-none" do %><button type="button" class="btn mb-3 btn-info btn-sm btn-block text-white">フォローを外す</button><% end %>
+          <% else %>
+            <%= link_to user_relationships_path(user.id), remote: true, method: :post, class:"text-decoration-none" do %><button type="button" class="btn mb-3 btn-success btn-sm btn-block text-white">フォローする</button><% end %>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
     <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>

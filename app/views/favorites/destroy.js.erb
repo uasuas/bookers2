@@ -1,1 +1,2 @@
 $('#favorite_buttons_<%= @book.id %>').html('<%= j(render "books/favorites", book: @book) %>');
+$('#profile').html('<%= j(render "layouts/profile", user: current_user) %>');

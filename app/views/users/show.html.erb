@@ -1,7 +1,9 @@
 <div class="container pt-4">
   <div class="row">
     <div class="col-md-3">
-      <%= render 'layouts/profile', user: @user %>
+      <div id="profile">
+        <%= render 'layouts/profile', user: @user %>
+      </div>
       <div id="newbook-template">
         <%= render 'layouts/booknew', book: @booknew %>
       </div>

@@ -3,7 +3,9 @@
   <div class="row">
     <div class="col-3 offset-9"><%= render 'layouts/search' %></div>
     <div class="col-md-3">
-      <%= render 'layouts/profile', user: current_user %>
+      <div id="profile">
+        <%= render 'layouts/profile', user: current_user %>
+      </div>
       <div id="newbook-template">
         <%= render 'layouts/booknew', book: @booknew %>
       </div>
@@ -29,8 +31,10 @@
             <td><%= image_tag user.get_profile_image(80,80) %></td>
             <td><%= user.name %></td>
             <td>
-              フォロー数: <%= user.followings.count %><br/>
-              フォロワー数: <%= user.followers.count %>
+              <ul style="list-style: none;">
+                <li id="follow-count">フォロー数：<%= render "layouts/followings_count", user: user %></li>
+                <li id="followers-count">フォロワー数： <%= render "layouts/followers_count", user: user %></li>
+              </ul>
             </td>
             <td id="ff_<%= user.id %>">
               <%= render 'relationships/ff', user: user %>

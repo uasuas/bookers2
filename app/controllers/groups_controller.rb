@@ -3,13 +3,13 @@ class GroupsController < ApplicationController
     before_action :ensure_correct_user, only: [:edit, :update]
 
     def index
-      @book = Book.new
+      @booknew = Book.new
       @groups = Group.all
       @user = User.find(current_user.id)
     end
 
     def show
-      @book = Book.new
+      @booknew = Book.new
       @group = Group.find(params[:id])
       # @user = User.find(params[:id])
     end

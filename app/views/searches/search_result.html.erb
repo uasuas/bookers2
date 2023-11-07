@@ -31,18 +31,6 @@
     </tbody>
   <% else %>
     <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
-    <thead>
-      <tr>
-        <th style="width: 120px"></th>
-        <th scope="col">Title</th>
-        <th scope="col">Body</th>
-        <th scope="col">Tag</th>
-        <th></th>
-        <th colspan="5"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render "books/index", books: @books %>
-    </tbody>
+    <%= render "books/index", books: @books %>
   <% end %>
 </table>

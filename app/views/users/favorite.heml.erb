@@ -1,0 +1,8 @@
+<div class="container-fluid pt-4">
+  <div class="row">
+    <div class="mx-auto col">
+      <h3 class="text-center">〜<%= @user.name %>のいいね一覧〜</h3>
+      <%= render "books/index", books: @favorite_books %>
+    </div>
+  </div>
+</div>

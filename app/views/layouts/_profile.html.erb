@@ -21,8 +21,8 @@
         <td><%= link_to user_followers_path(user.id), class:"text-decoration-none" do %><%= user.followers.count %><% end %></td>
       </tr>
       <tr>
-        <th><%= link_to 'いいね', favorites_user_path(user), class:"text-decoration-none" %></th>
-        <td></td>
+        <th scope="row">いいね</th>
+        <td id="favorite_buttons_<%= user.id %>"><%= render "layouts/favoritescount", user: user %></td>
       </tr>
     </thead>
   </table>

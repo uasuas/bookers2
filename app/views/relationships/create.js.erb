@@ -1,4 +1,10 @@
-$('#ff_<%= @user.id %>').html('<%= j(render "relationships/ff", user: @user) %>');
+
 <!--$('#follow-count_%= @user.id %>').html('%= j(render "layouts/followings_count", user: @user) %>');-->
 <!--$('#followers-count_%= @user.id %>').html('%= j(render "layouts/followers_count", user: @user) %>');-->
-$('#profile').html('<%= j(render "layouts/profile", user: @user) %>');
+<% if current_user == @user %>
+  $('#ff_<%= @user.id %>').html('<%= j(render "relationships/ff", user: current_user) %>');
+  $('#profile').html('<%= j(render "layouts/profile", user: current_user) %>');
+<% else %>
+  $('#ff_<%= @user.id %>').html('<%= j(render "relationships/ff", user: @user) %>');
+  $('#profile').html('<%= j(render "layouts/profile", user: @user) %>');
+<% end %>

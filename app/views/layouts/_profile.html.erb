@@ -26,26 +26,28 @@
       </tr>
     </thead>
   </table>
-  <div class="mb-4">
-    <% if user_signed_in? && current_user == user %>
-      <%= link_to edit_user_path(user), reomte: true do %>
-        <button type="button" class="btn btn-outline-secondary btn-block">
-          <i class="fa-solid fa-user-cog"></i>
-        </button>
-      <% end %>
-    <% else %>
-      <div>
-        <% if user_signed_in? && current_user != user %>
-          <% if current_user.following?(user) %>
-            <%= link_to user_relationships_path(user.id), remote: true, method: :delete, class:"text-decoration-none" do %><button type="button" class="btn mb-3 btn-info btn-sm btn-block text-white">フォローを外す</button><% end %>
-          <% else %>
-            <%= link_to user_relationships_path(user.id), remote: true, method: :post, class:"text-decoration-none" do %><button type="button" class="btn mb-3 btn-success btn-sm btn-block text-white">フォローする</button><% end %>
-          <% end %>
+  <% if user.email != "guest@example.com" %>
+    <div class="mb-4">
+      <% if user_signed_in? && current_user == user %>
+        <%= link_to edit_user_path(user), reomte: true do %>
+          <button type="button" class="btn btn-outline-secondary btn-block">
+            <i class="fa-solid fa-user-cog"></i>
+          </button>
         <% end %>
-      </div>
+      <% else %>
+        <div>
+          <% if user_signed_in? && current_user != user %>
+            <% if current_user.following?(user) %>
+              <%= link_to user_relationships_path(user.id), remote: true, method: :delete, class:"text-decoration-none" do %><button type="button" class="btn mb-3 btn-info btn-sm btn-block text-white">フォローを外す</button><% end %>
+            <% else %>
+              <%= link_to user_relationships_path(user.id), remote: true, method: :post, class:"text-decoration-none" do %><button type="button" class="btn mb-3 btn-success btn-sm btn-block text-white">フォローする</button><% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
+        <%= link_to 'chatを始める', chat_path(user.id), class: "ml-3" %>
+      <% end %>
+    </div>
     <% end %>
-    <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
-      <%= link_to 'chatを始める', chat_path(user.id), class: "ml-3" %>
-    <% end %>
-  </div>
 </div>

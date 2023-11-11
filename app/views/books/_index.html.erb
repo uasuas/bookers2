@@ -16,6 +16,15 @@
         <td><%= book.body %></td>
         <td><%= link_to tags_search_path(content: book.tag) do %><%= book.tag %><% end %></td>
         <td>
+          <%= link_to book_video_path(book) do %>
+            <% if book.video.attached? %>
+              <%= video_tag url_for(book.video), size: "100x100" %>
+            <% else %>
+              <span>No video available</span>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
           <ul class="p-0"style="list-style: none;">
             <li><%= render "books/static.rate", book: book %></li>
             <li id="favorite_buttons_<%= book.id %>"><%= render "books/favorites", book: book %></li>

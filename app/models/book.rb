@@ -6,6 +6,8 @@ class Book < ApplicationRecord
   has_many :week_favorites, -> { where(created_at: 1.week.ago.beginning_of_day..Time.current.end_of_day) }
   # 閲覧数
   has_many :read_counts, dependent: :destroy
+  # 動画投稿用
+  has_one_attached :video
 
 
   # 検索機能
@@ -40,5 +42,11 @@ class Book < ApplicationRecord
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+
+  private
+  def clip_type
+    if clip.attached? && !clip.content_type.in?(%w(video/mp4 video/mov video/avi video/quicktime).map(&:downcase))
+    end
   end
 end

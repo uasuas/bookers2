@@ -1,5 +1,7 @@
 // Swiperのオプションを定数化((((スライドショーのためにファイル作成))))
-
+/*global $*/
+/*global Swiper $*/
+/*global loadingTimer $*/
 // 一度だけマウスが置かれた時にアラートを表示しろ
 let alertShown = false;
 $(function(){
@@ -63,6 +65,32 @@ $(document).on('turbolinks:load', function() {
       }).slideDown(1000);
     });
   });
+});
+
+// document.addEventListener('turbolinks:load', function() {
+// window.onload = function() {
+//   const loading = document.querySelector('.loading');
+//   if (loading) {
+//       loading.classList.add('hide');
+//   };
+// };
+
+document.addEventListener('turbolinks:request-start', function() {
+  const loading = document.querySelector('.loading');
+  const main = document.querySelector('.main');
+  if (loading) {
+    setTimeout(function() {
+      loading.style.display = 'block';
+      main.style.visibility = 'hidden';
+    },800);
+  }
+});
+
+document.addEventListener('turbolinks:load', function() {
+  const loading = document.querySelector('.loading');
+  if (loading) {
+    loading.style.display = 'none';
+  }
 });
 // // イベントを監視する要素を取得
 // const targetElement = document.getElementById('target-element'); // マウスオーバーをトリガーする要素

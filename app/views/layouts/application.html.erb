@@ -11,22 +11,33 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <%= yield %>
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <span id="back" class="fixed-bottom" style="position: fixed; left: 10px; bottom: 10px;">
-            <a href="#">
-              <%= image_tag 'arrow.png', size: '30x30' %>
-            </a>
-          </span>
+    <div class="loading">
+      <span>L</span>
+      <span class="animate">O</span>
+      <span class="animate">A</span>
+      <span class="animate">D</span>
+      <span>I</span>
+      <span>N</span>
+      <span>G</span>
+    </div>
+    <main class="main">
+      <%= render 'layouts/header' %>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <%= yield %>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <span id="back" class="fixed-bottom" style="position: fixed; left: 10px; bottom: 10px;">
+              <a href="#">
+                <%= image_tag 'arrow.png', size: '30x30' %>
+              </a>
+            </span>
+          </div>
         </div>
       </div>
-    </div>
-    <%= render 'layouts/footer' %>
+      <%= render 'layouts/footer' %>
+    </main>
   </body>
 </html>

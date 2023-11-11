@@ -97,11 +97,15 @@ before_action :is_matching_login_user, only: [:edit, :update]
     end
   end
 
+  def video
+    @book = Book.find(params[:book_id])
+  end
+
 
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :star, :tag)
+    params.require(:book).permit(:title, :body, :star, :tag, :video)
   end
 
   def is_matching_login_user

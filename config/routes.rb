@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   get 'search', to: "searches#search"
   get "tags/search", to: "tags#search"
 
+
   resources :books do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
+    get "video", to: "books#video", as: "video"
   end
 
   resources :users, only: [:new, :index, :show, :edit, :update]

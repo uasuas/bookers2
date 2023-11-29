@@ -1,0 +1,6 @@
+<li class="navbar-nav">
+  <%= link_to item[:path], method: item[:method] || nil, class: "nav-link" do %>
+    <i class="fas <%= item[:icon] %>"></i>
+    <%= item[:text] %>
+  <% end %>
+</li>

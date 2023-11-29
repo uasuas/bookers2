@@ -1,31 +1,15 @@
-<% if user_signed_in? %>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<header id="header">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
     <%= link_to root_path, class: "navbar-brand active" do %>Bookers<% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav ml-auto">
-        <%= link_to user_path(current_user), class: "nav-link" do %><i class="fa-solid fa-home"></i> Home<% end %>
-        <%= link_to users_path, class: "nav-link" do %><i class="fa-solid fa-users"></i> Users<% end %>
-        <%= link_to books_path, class: "nav-link" do %><i class="fa-solid fa-book-open"></i> Books<% end %>
-        <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %><i class="fa-solid fa-sign-out-alt"></i> Log out<% end %>
-      </div>
+    <div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <%= render partial: "layouts/nav-item", collection: nav_items, as: :item %>
+      </ul>
     </div>
   </nav>
-<% else %>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <%= link_to root_path, class: "navbar-brand active" do %>Bookers<% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav ml-auto">
-        <%= link_to root_path, class: "nav-link" do %><i class="fa-solid fa-home"></i> Home<% end %>
-        <%= link_to about_path, class: "nav-link" do %><i class="fa-solid fa-link"></i> About<% end %>
-        <%= link_to new_user_registration_path, class: "nav-link" do %><i class="fa-solid fa-user-plus"></i> Sign up<% end %>
-        <%= link_to new_user_session_path, class: "nav-link" do %><i class="fa-solid fa-sign-in-alt"></i> Log in<% end %>
-      </div>
-    </div>
-  </nav>
-<% end %>
+</header>

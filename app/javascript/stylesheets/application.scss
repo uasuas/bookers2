@@ -103,3 +103,13 @@
 .loading span:nth-child(5) {
   padding-left: 77px;
 }
+
+html, body {
+  height: 100%;
+}
+
+footer {
+  position: sticky;
+  top: 100vh;
+  top: 100dvh;
+}
